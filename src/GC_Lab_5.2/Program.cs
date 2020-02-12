@@ -6,7 +6,7 @@ namespace GC_Lab_5._2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
