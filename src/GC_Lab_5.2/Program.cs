@@ -22,8 +22,9 @@ namespace GC_Lab_5._2
 
             for (int i = players.Count; i < 2; i++)
             {
+                
                 string NPCname = UI.GetStringFromUser($"Enter name for player {i + 1}: ");
-                Player NPC = GetRandomNPC(NPCname);
+                Player NPC = GetSpecificNPC(NPCname);
                 players.Add(NPC);
             }
 
@@ -60,16 +61,38 @@ namespace GC_Lab_5._2
             } while (UI.PlayAgain());
         }
 
-        private static Player GetRandomNPC(string nPCname)
+        private static Player GetRandomNPC(string npcName)
         {
             Random random = new Random();
 
             if (random.Next(2) == 0)
             {
-                return new Rando(nPCname);
+                return new Rando(npcName);
             }
 
-            return new Rocky(nPCname);
+            return new Rocky(npcName);
+        }
+
+        private static Player GetSpecificNPC(string npcName) 
+        {
+            while (true)
+            {
+                string type = UI.GetStringFromUser("What type of NPC is this player?\n Rando or Rocky: ").ToLower();
+
+                if (type == "rando")
+                {
+                    return new Rando(npcName);
+                }
+                else if (type == "rocky")
+                {
+                    return new Rocky(npcName);
+                }
+                else
+                {
+                    UI.WriteErrorMessage("Must type Rando or Rocky");
+                }
+            }
+        
         }
     }
 }
