@@ -34,7 +34,7 @@ namespace GC_Lab_5._2
 
         internal static void PressAnyKeyToContinue()
         {
-            Console.WriteLine("Press any Key to Continue...");
+            Console.WriteLine("\nPress any Key to Continue...");
             Console.ReadKey(true);
         }
 

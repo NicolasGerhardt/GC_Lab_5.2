@@ -31,24 +31,24 @@ namespace GC_Lab_5._2
 
             do
             {
-                Dictionary<Player, Roshambo> playerChoices = new Dictionary<Player, Roshambo>();
+                
                 // Get each players choices
                 foreach (Player player in players)
                 {
-                    playerChoices[player] = player.GenerateNextRoshambo();
+                    player.GenerateNextRoshambo();
                 }
 
                 Console.Clear();
                 foreach (Player player in players)
                 {
-                    Console.WriteLine($"{player} picked {playerChoices[player]}.");
+                    Console.WriteLine($"{player} picked {player.Roshambo}.\n");
                 }
 
-                if (playerChoices[players[0]] == playerChoices[players[1]])
+                if (players[0].Roshambo == players[1].Roshambo)
                 {
                     UI.WriteBlue("Tie");
                 }
-                else if (playerChoices[players[0]] == playerChoices[players[1]] - 1 || playerChoices[players[0]] == playerChoices[players[1]] + 2)
+                else if (players[0].Roshambo == players[1].Roshambo - 1 || players[0].Roshambo == players[1].Roshambo + 2)
                 {
                     UI.WriteGreen($"{players[1]} Wins!!");
                 }
@@ -77,7 +77,7 @@ namespace GC_Lab_5._2
         {
             while (true)
             {
-                string type = UI.GetStringFromUser("What type of NPC is this player?\n Rando or Rocky: ").ToLower();
+                string type = UI.GetStringFromUser("What type of NPC is this player?\nRando or Rocky: ").ToLower();
 
                 if (type == "rando")
                 {
