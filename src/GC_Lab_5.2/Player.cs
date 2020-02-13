@@ -9,13 +9,21 @@ namespace GC_Lab_5._2
         private string name;
         private Roshambo roshambo;
 
-        protected Player(string name)
+        public Player(string name)
         {
             Name = name;
         }
 
-        public string Name { get => name; protected set => name = value; }
+        public string Name { get => name; set => name = value; }
         public Roshambo Roshambo { get => roshambo; protected set => roshambo = value; }
-        protected abstract Roshambo GenerateNextRoshambo();
+        /// <summary>
+        /// Gets a new value for the players current Roshambo choice. 
+        /// </summary>
+        /// <returns>Returns the final Roshambo setting</returns>
+        public abstract Roshambo GenerateNextRoshambo();
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
