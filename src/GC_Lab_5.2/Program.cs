@@ -54,7 +54,7 @@ namespace GC_Lab_5._2
                 }
                 else
                 {
-                    UI.WriteGreen($"{players[0]} Wins!! no comparison");
+                    UI.WriteGreen($"{players[0]} Wins!!");
                 }
                 UI.PressAnyKeyToContinue();
 
