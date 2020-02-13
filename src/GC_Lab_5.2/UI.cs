@@ -143,11 +143,11 @@ namespace GC_Lab_5._2
         public static int GetNumberOfHumanPlayers()
         {
             List<string> playerOptionsList = new List<string>();
-            playerOptionsList.Add("0 Humans");
-            playerOptionsList.Add("1 Human ");
-            playerOptionsList.Add("2 Humans");
+            playerOptionsList.Add("Computer vs Computer");
+            playerOptionsList.Add("Computer vs Human");
+            playerOptionsList.Add("Human vs Human");
 
-            return UI.GetMenuSelection("How many human players?", playerOptionsList);
+            return UI.GetMenuSelection("What type of game do you want to play?", playerOptionsList);
         }
 
     }
