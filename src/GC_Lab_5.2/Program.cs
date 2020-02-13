@@ -1,6 +1,4 @@
-﻿#define GAME
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 
@@ -11,20 +9,6 @@ namespace GC_Lab_5._2
     {
         static void Main(string[] args)
         {
-#if TEST
-            Roshambo rotate = Roshambo.Rock;
-            while (true)
-            {
-                Console.WriteLine(rotate);
-                rotate++;
-                UI.PressAnyKeyToContinue();
-            }
-            
-#endif
-
-#if GAME
-
-
             Console.WriteLine("Lets play some Rock/Paper/Scissors!!");
             int numOfHumanPlayers = UI.GetNumberOfHumanPlayers();
             List<Player> players = new List<Player>();
@@ -39,7 +23,7 @@ namespace GC_Lab_5._2
             for (int i = players.Count; i < 2; i++)
             {
                 string NPCname = UI.GetStringFromUser($"Enter name for player {i + 1}: ");
-                Player NPC = new Rando(NPCname);
+                Player NPC = GetRandomNPC(NPCname);
                 players.Add(NPC);
             }
 
@@ -51,8 +35,6 @@ namespace GC_Lab_5._2
                 foreach (Player player in players)
                 {
                     playerChoices[player] = player.GenerateNextRoshambo();
-                    Console.WriteLine($"{player} picked {playerChoices[player]}.");
-                    UI.PressAnyKeyToContinue();
                 }
 
                 Console.Clear();
@@ -67,8 +49,6 @@ namespace GC_Lab_5._2
                 }
                 else if (playerChoices[players[0]] == playerChoices[players[1]] - 1 || playerChoices[players[0]] == playerChoices[players[1]] + 2)
                 {
-                    Console.WriteLine($"minus 1: {playerChoices[players[1]] - 1}");
-                    Console.WriteLine($"minus 1: {playerChoices[players[1]] + 2}");
                     UI.WriteGreen($"{players[1]} Wins!!");
                 }
                 else
@@ -78,7 +58,18 @@ namespace GC_Lab_5._2
                 UI.PressAnyKeyToContinue();
 
             } while (UI.PlayAgain());
-#endif
+        }
+
+        private static Player GetRandomNPC(string nPCname)
+        {
+            Random random = new Random();
+
+            if (random.Next(2) == 0)
+            {
+                return new Rando(nPCname);
+            }
+
+            return new Rocky(nPCname);
         }
     }
 }
